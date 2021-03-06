@@ -45,3 +45,7 @@ function searchHandler(e) {
         alert("min length must be 2")
     }
 }
+
+
+document.getElementsByClassName("searchCountryForm")[0]
+    .addEventListener('submit', searchHandler);
