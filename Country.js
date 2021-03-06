@@ -17,3 +17,11 @@ function createCountry(countries) {
     return countryElement;
 
 }
+
+function addCountry(countryElement) {
+    if (document.getElementsByClassName('countries')[0].firstChild === null) {
+        document.getElementsByClassName('countries')[0].append(countryElement);
+    } else {
+        document.getElementsByClassName('countries')[0].firstChild.replaceWith(countryElement);
+    }
+}
