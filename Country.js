@@ -25,3 +25,23 @@ function addCountry(countryElement) {
         document.getElementsByClassName('countries')[0].firstChild.replaceWith(countryElement);
     }
 }
+
+function searchHandler(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    let name = data.get("countryName");
+    if (name.length > 1) {
+        fetch("https://restcountries.eu/rest/v2/name/" + name)
+            .then(resp => resp.json()
+                .then(data => {
+                    if (data.status === 404) {
+                        alert('not found');
+                    } else {
+                        addCountry(createCountry(data))
+                    }
+                }));
+    } else {
+        alert("min length must be 2")
+    }
+}
